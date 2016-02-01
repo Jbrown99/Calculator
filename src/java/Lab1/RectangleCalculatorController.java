@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Lab1;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,10 +39,24 @@ public class RectangleCalculatorController extends HttpServlet {
            String length = request.getParameter("length");
            String width = request.getParameter("width");
            
+           AreaOfRectangleCalculatorService areaCalc = new AreaOfRectangleCalculatorService();
+           String responseMsg = areaCalc.areaOfRectangle(length, width);
            
-           
+            request.setAttribute("myMsg", responseMsg);
+            
+             RequestDispatcher view =
+                    request.getRequestDispatcher("/areaOfRectangleCalculation.jsp");
+            view.forward(request,response);
+            
+        } catch(Exception e){
+            request.setAttribute("errorMsg", e.getMessage());
         }
+        
+        
     }
+           
+        
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

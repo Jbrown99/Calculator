@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package Lab1;
 
 /**
  *
  * @author joshuabrown
  */
 public class AreaOfRectangleCalculatorService {
+    
     
     public String areaOfRectangle(String length, String width){
         
